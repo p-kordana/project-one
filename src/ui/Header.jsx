@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
+import OrderSearch from "../features/order/OrderSearch";
 
 function Header() {
   return (
     <header>
-      <Link to={"/"}> Fast React</Link>
+      <ul>
+        <li>
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li>
+          <Link to={"/menu"}>Menu</Link>
+        </li>
+      </ul>
+      <OrderSearch />
       <p>Username</p>
     </header>
   );
