@@ -9,9 +9,9 @@ function AppLayout() {
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       <Header />
-      {isLoading && <Loading />}
-      <div className="overflow-scroll">
-        <main className="mx-[20vw] max-w-3xl bg-red-300">
+      <div className="overflow-auto">
+        <main className="mx-[16vw] h-full max-w-3xl bg-stone-100 p-4">
+          {isLoading && <Loading />}
           <Outlet />
         </main>
       </div>
