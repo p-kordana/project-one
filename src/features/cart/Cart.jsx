@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LinkButton from "../../ui/LinkButton";
+import Button from "../../ui/Button";
 
 const fakeCart = [
   {
@@ -26,20 +28,16 @@ const fakeCart = [
 
 function Cart() {
   const cart = fakeCart;
+  const navigate = useNavigate();
 
   return (
     <div>
-      <Link
-        to="/menu"
-        className="text-sm text-blue-500 hover:text-blue-700 hover:underline"
-      >
-        &larr; Back to menu
-      </Link>
+      <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
       <h2>Your cart, %NAME%</h2>
 
       <div>
-        <Link to="/order/new">Order pizzas</Link>
+        <Button onClick={() => navigate("/order/new")}>Order pizzas</Button>
         <button>Clear cart</button>
       </div>
     </div>
