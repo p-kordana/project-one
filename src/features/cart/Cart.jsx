@@ -37,7 +37,9 @@ function Cart() {
       <h2>Your cart, %NAME%</h2>
 
       <div>
-        <Button onClick={() => navigate("/order/new")}>Order pizzas</Button>
+        <Button className="mt-2 px-3" onClick={() => navigate("/order/new")}>
+          Order pizzas
+        </Button>
         <button>Clear cart</button>
       </div>
     </div>
