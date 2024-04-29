@@ -46,7 +46,9 @@ function CreateOrder() {
 
   return (
     <div>
-      <h2>{"Ready to order? Let's go!"}</h2>
+      <h2 className="mb-4 text-center font-serif text-xl lowercase italic text-amber-500">
+        {"Ready to order? Let's go!"}
+      </h2>
 
       <Form method="POST">
         <div>
@@ -79,7 +81,7 @@ function CreateOrder() {
           <label htmlFor="priority">Want to give your order priority?</label>
         </div>
 
-        <div>
+        <div className="mt-4 text-right">
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button disabled={isSubmitting}>
             {isSubmitting ? "Placing..." : "Order now"}

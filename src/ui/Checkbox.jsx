@@ -11,7 +11,7 @@ function Checkbox({ name, id }) {
       type="checkbox"
       name={name}
       id={id}
-      className="mr-2 mt-2 h-4 w-4 accent-amber-400"
+      className="mr-2 mt-3 h-4 w-4 accent-amber-400"
     ></input>
   );
 }
