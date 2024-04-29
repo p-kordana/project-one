@@ -46,42 +46,46 @@ function CreateOrder() {
 
   return (
     <div>
-      <h2 className="mb-4 text-center font-serif text-xl lowercase italic text-amber-500">
+      <h2 className="mb-6 text-center font-serif text-lg lowercase italic text-amber-500 sm:mb-8 sm:text-2xl">
         {"Ready to order? Let's go!"}
       </h2>
 
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <Input type="text" name="customer" required />
+        <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <Input className="grow" type="text" name="customer" required />
         </div>
 
-        <div>
-          <label>Phone number</label>
-          <div>
-            <Input type="tel" name="phone" required />
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <Input type="text" name="address" required />
+        <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Phone number</label>
+          <div className="grow">
+            <Input className="w-full" type="tel" name="phone" required />
+            {formErrors?.phone && (
+              <p className="text-xs text-red-400">{formErrors.phone}</p>
+            )}
           </div>
         </div>
 
-        <div>
+        <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <Input className="w-full" type="text" name="address" required />
+          </div>
+        </div>
+
+        <div className="mb-8">
           <Checkbox
             name="priority"
             id="priority"
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority">Want to give your order priority?</label>
+          <label className="font-medium" htmlFor="priority">
+            Want to give your order priority?
+          </label>
         </div>
 
-        <div className="mt-4 text-right">
+        <div className="text-right">
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
           <Button disabled={isSubmitting}>
             {isSubmitting ? "Placing..." : "Order now"}

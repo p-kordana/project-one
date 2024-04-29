@@ -27,7 +27,7 @@ function Input({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={`${className} w-full rounded-lg border-2 border-stone-300 px-2 py-1 text-sm`}
+      className={`${className} rounded-lg border-2 border-stone-300 px-2 py-1 text-sm`}
     ></input>
   );
 }
