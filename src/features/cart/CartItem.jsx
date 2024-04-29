@@ -17,7 +17,7 @@ function CartItem({ item }) {
       <div className="col-span-2 flex items-center justify-between sm:gap-6">
         <p className="text-sm font-semibold">{formatCurrency(totalPrice)}</p>
         <Button type="delete" size="small" className="font-bold">
-          &times;
+          delete
         </Button>
       </div>
     </li>

@@ -21,8 +21,10 @@ const types = {
 };
 
 const sizes = {
-  default: "px-3 py-2 border-2 focus:ring focus:ring-offset-2",
-  small: "px-1 py-0 border-none focus:ring-2 focus:ring-offset-1 text-[8pt]",
+  default:
+    "tracking-tight sm:tracking-normal md:tracking-wide px-3 py-2 md:px-4 md:py-3 border-2 focus:ring focus:ring-offset-2 text-sm",
+  small:
+    "tracking-tighter sm:tracking-tight px-2 py-1 border-none focus:ring-2 focus:ring-offset-1 text-[8pt]",
 };
 
 function Button({
