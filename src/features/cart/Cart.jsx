@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import CartItem from "../../features/cart/CartItem";
 import LinkButton from "../../ui/LinkButton";
 import Button from "../../ui/Button";
 
@@ -34,13 +35,19 @@ function Cart() {
     <div>
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
 
-      <h2>Your cart, %NAME%</h2>
+      <h2 className="mt-8 text-lg font-semibold">Your cart, %NAME%</h2>
 
-      <div>
+      <ul className="mt-3 divide-y divide-stone-200 border-b">
+        {cart.map((i) => (
+          <CartItem key={i.pizzaId} item={i} />
+        ))}
+      </ul>
+
+      <div className="mt-6 space-x-2">
         <Button className="mt-2 px-3" onClick={() => navigate("/order/new")}>
           Order pizzas
         </Button>
-        <button>Clear cart</button>
+        <Button type="secondary">Clear cart</Button>
       </div>
     </div>
   );
