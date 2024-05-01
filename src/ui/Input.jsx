@@ -7,6 +7,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
   value: PropTypes.any,
+  defaultValue: PropTypes.string,
   onChange: PropTypes.any,
 };
 
@@ -14,9 +15,10 @@ function Input({
   type,
   name,
   required,
-  placeholder,
+  placeholder = "",
   className,
   value,
+  defaultValue = "",
   onChange,
 }) {
   return (
@@ -26,6 +28,7 @@ function Input({
       required={required}
       placeholder={placeholder}
       value={value}
+      defaultValue={defaultValue}
       onChange={onChange}
       className={`${className} rounded-lg border-2 border-stone-300 px-2 py-1 text-sm`}
     ></input>
