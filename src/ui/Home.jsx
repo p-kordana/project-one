@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
 import CreateUser from "../features/user/CreateUser";
+import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const username = useSelector((state) => state.user.username);
+  const navigate = useNavigate();
 
   return (
     <div className="my-10 text-center sm:my-16">
@@ -14,7 +17,11 @@ function Home() {
         </span>
       </h1>
 
-      {!username && <CreateUser />}
+      {!username ? (
+        <CreateUser />
+      ) : (
+        <Button onClick={() => navigate("/menu")}>Resume Order</Button>
+      )}
     </div>
   );
 }
