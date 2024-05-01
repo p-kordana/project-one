@@ -10,7 +10,7 @@ function MenuItem({ pizza }) {
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
 
   return (
-    <li className="font-pizza flex gap-4 py-2">
+    <li className="flex gap-4 py-2 font-pizza">
       <img
         className={`h-24 ${soldOut ? "opacity-70 grayscale" : ""}`}
         src={imageUrl}
@@ -27,7 +27,7 @@ function MenuItem({ pizza }) {
           ) : (
             <p className="font-semibold uppercase text-stone-400">Sold out</p>
           )}
-          <Button className="text-xs md:px-3 md:py-2 md:text-sm">
+          <Button size="small" className="md:px-3 md:py-2 md:text-sm">
             Add to cart
           </Button>
         </div>
