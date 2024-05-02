@@ -6,6 +6,8 @@ function CartOverview() {
   const numItems = useSelector(getNumItems);
   const totPrice = useSelector(getCartPrice);
 
+  if (!numItems) return null;
+
   return (
     <div className="flex items-center justify-between border-t-2 border-stone-900 bg-stone-700 p-3 text-sm uppercase text-stone-200 sm:px-6 md:text-base">
       <p className="space-x-4 font-semibold text-stone-300 sm:space-x-6">
