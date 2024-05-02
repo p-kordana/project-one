@@ -15,10 +15,10 @@ function Input({
   type,
   name,
   required,
-  placeholder = "",
+  placeholder,
   className,
   value,
-  defaultValue = "",
+  defaultValue,
   onChange,
 }) {
   return (
