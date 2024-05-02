@@ -50,6 +50,8 @@ export const { addItem, removeItem, updateQuantity, emptyCart } =
 
 export default cartSlice.reducer;
 
+export const getCart = (state) => state.cart.items;
+
 export const getNumItems = (state) =>
   state.cart.items.reduce((a, c) => a + c.quantity, 0);
 
