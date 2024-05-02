@@ -9,7 +9,9 @@ function CartOverview() {
   if (!numItems) return null;
 
   return (
-    <div className="flex items-center justify-between border-t-2 border-stone-900 bg-stone-700 p-3 text-sm uppercase text-stone-200 sm:px-6 md:text-base">
+    <div
+      className={`slidingUp flex items-center justify-between border-t-2 border-stone-900 bg-stone-700 p-3 text-sm uppercase text-stone-200 sm:px-6 md:text-base`}
+    >
       <p className="space-x-4 font-semibold text-stone-300 sm:space-x-6">
         <span>{numItems} pizzas</span>
         <span>${totPrice}</span>
