@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   //   cart: [],
-  cart: [
+  items: [
     {
       pizzaId: 12,
       name: "Mediterranean",
@@ -19,11 +19,11 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action) {
       //payload = new item object
-      state.cart.push(action.payload);
+      state.items.push(action.payload);
     },
     removeItem(state, action) {
       //payload = item id
-      state.cart.filter((i) => i.pizzaId !== action.payload);
+      state.items.filter((i) => i.pizzaId !== action.payload);
     },
     updateQuantity: {
       prepare(pizzaId, quantity) {
@@ -35,12 +35,12 @@ const cartSlice = createSlice({
         };
       },
       reducer(state, action) {
-        const item = state.cart.find((i) => i.pizzaId === action.payload.id);
+        const item = state.items.find((i) => i.pizzaId === action.payload.id);
         item.quantity += action.payload.qty;
       },
     },
     emptyCart(state) {
-      state.cart = [];
+      state.items = [];
     },
   },
 });
