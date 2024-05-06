@@ -23,7 +23,7 @@ const cartSlice = createSlice({
     },
     removeItem(state, action) {
       //payload = item id
-      state.items.filter((i) => i.pizzaId !== action.payload);
+      state.items = state.items.filter((i) => i.pizzaId !== action.payload);
     },
     updateQuantity: {
       prepare(pizzaId, quantity) {
