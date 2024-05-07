@@ -12,7 +12,7 @@ function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item;
   const dispatch = useDispatch();
 
-  function handleDelete() {
+  function handleRemove() {
     dispatch(removeItem(pizzaId));
   }
 
@@ -27,9 +27,9 @@ function CartItem({ item }) {
           type="delete"
           size="small"
           className="font-bold"
-          onClick={handleDelete}
+          onClick={handleRemove}
         >
-          delete
+          remove
         </Button>
       </div>
     </li>
