@@ -39,10 +39,12 @@ const cartSlice = createSlice({
         item.quantity += action.payload.qty;
         item.totalPrice = item.unitPrice * item.quantity;
 
-        // TODO: Figure out why this will not remove the item
-        // Fallback: It will work if I put the logic in the decrement handler on CartItem
-        if (item.quantity === 0)
-          cartSlice.caseReducers.removeItem(state, action.payload.id);
+        if (item.quantity === 0) {
+          cartSlice.caseReducers.removeItem(state, {
+            type: "cart/removeItem",
+            payload: action.payload.id,
+          });
+        }
       },
     },
     emptyCart(state) {
