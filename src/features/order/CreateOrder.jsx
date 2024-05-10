@@ -79,9 +79,11 @@ function CreateOrder() {
           </label>
         </div>
 
-        <div className="text-right">
+        <div className="flex items-center justify-end gap-2">
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <span className="px-3">{formatCurrency(totalCartPrice)}</span>
+          <div className="rounded-md border-2 border-stone-200 bg-stone-100 px-2 py-2 text-sm font-medium md:px-3 md:text-base">
+            Cart Total: {formatCurrency(totalCartPrice)}
+          </div>
           <Button disabled={isSubmitting}>
             {isSubmitting ? "Placing..." : `Order now `}
           </Button>
