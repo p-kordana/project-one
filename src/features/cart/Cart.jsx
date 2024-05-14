@@ -8,7 +8,7 @@ import { emptyCart, getCart } from "./cartSlice";
 import { getUser } from "../user/userSlice";
 
 function Cart() {
-  const username = useSelector(getUser);
+  const { username } = useSelector(getUser);
   const cart = useSelector(getCart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
