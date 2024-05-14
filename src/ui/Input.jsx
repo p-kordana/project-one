@@ -4,6 +4,7 @@ Input.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   required: PropTypes.bool,
+  disabled: PropTypes.bool,
   placeholder: PropTypes.string,
   className: PropTypes.string,
   value: PropTypes.any,
@@ -15,6 +16,7 @@ function Input({
   type,
   name,
   required,
+  disabled,
   placeholder,
   className,
   value,
@@ -26,9 +28,10 @@ function Input({
       type={type}
       name={name}
       required={required}
-      placeholder={placeholder}
-      value={value}
-      defaultValue={defaultValue}
+      {...(disabled !== undefined ? { disabled: disabled } : {})}
+      {...(placeholder !== undefined ? { placeholder: placeholder } : {})}
+      {...(value !== undefined ? { value: value } : {})}
+      {...(defaultValue !== undefined ? { defaultValue: defaultValue } : {})}
       onChange={onChange}
       className={`${className} rounded-lg border-2 border-stone-300 px-2 py-1 text-sm`}
     ></input>

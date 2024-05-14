@@ -39,7 +39,7 @@ function Button({
 
   return (
     <button
-      disabled={disabled}
+      {...(disabled !== undefined ? { disabled: disabled } : {})}
       onClick={onClick}
       className={`${style} ${className}`}
     >
