@@ -5,9 +5,9 @@ import Input from "../../ui/Input";
 import Checkbox from "../../ui/Checkbox";
 import Button from "../../ui/Button";
 import EmptyCart from "../cart/EmptyCart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { emptyCart, getCart, getCartPrice } from "../cart/cartSlice";
-import { getUser } from "../user/userSlice";
+import { fetchAddress, getUser } from "../user/userSlice";
 import store from "../../store";
 import { formatCurrency } from "../../utils/helpers";
 
@@ -21,7 +21,13 @@ const priorityMod = 0.2;
 
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
-  const username = useSelector(getUser);
+  const {
+    username,
+    status: addressStatus,
+    position,
+    address,
+  } = useSelector(getUser);
+  const isLoadingAddress = addressStatus === "loading";
   const cart = useSelector(getCart);
   const cartPrice = useSelector(getCartPrice);
   const navigation = useNavigation();
@@ -29,6 +35,7 @@ function CreateOrder() {
   const priorityPrice = withPriority ? cartPrice * priorityMod : 0;
   const totalCartPrice = cartPrice + priorityPrice;
   const formErrors = useActionData();
+  const dispatch = useDispatch();
 
   if (!cart.length) return <EmptyCart />;
 
@@ -60,10 +67,33 @@ function CreateOrder() {
           </div>
         </div>
 
-        <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="relative mb-2 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
-            <Input className="w-full" type="text" name="address" required />
+            <Input
+              className="w-full"
+              type="text"
+              name="address"
+              defaultValue={address}
+              disabled={isLoadingAddress}
+              required
+            />
+            {!position.latitude && !position.longitude && (
+              <span className="absolute bottom-1 right-1 z-10">
+                <Button
+                  type="primary"
+                  size="small"
+                  className="rounded-md"
+                  disabled={isLoadingAddress}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(fetchAddress());
+                  }}
+                >
+                  Get address
+                </Button>
+              </span>
+            )}
           </div>
         </div>
 
