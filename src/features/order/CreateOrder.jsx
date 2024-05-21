@@ -26,6 +26,7 @@ function CreateOrder() {
     status: addressStatus,
     position,
     address,
+    error: addressError,
   } = useSelector(getUser);
   const isLoadingAddress = addressStatus === "loading";
   const cart = useSelector(getCart);
@@ -78,8 +79,11 @@ function CreateOrder() {
               disabled={isLoadingAddress}
               required
             />
+            {addressStatus === "error" && (
+              <p className="text-xs font-bold text-red-400">{addressError}</p>
+            )}
             {!position.latitude && !position.longitude && (
-              <span className="absolute bottom-1 right-1 z-10">
+              <span className="absolute bottom-1 right-1 top-[33px] z-10 sm:top-[1px]">
                 <Button
                   type="primary"
                   size="small"
@@ -111,10 +115,19 @@ function CreateOrder() {
 
         <div className="flex items-center justify-end gap-2">
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              position.latitude && position.longitude
+                ? `${position.latitude},${position.longitude}`
+                : ""
+            }
+          />
           <div className="rounded-md border-2 border-stone-200 bg-stone-100 px-2 py-2 text-sm font-medium md:px-3 md:text-base">
             Cart Total: {formatCurrency(totalCartPrice)}
           </div>
-          <Button disabled={isSubmitting}>
+          <Button disabled={isSubmitting || isLoadingAddress}>
             {isSubmitting ? "Placing..." : `Order now `}
           </Button>
         </div>
