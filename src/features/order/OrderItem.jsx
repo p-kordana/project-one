@@ -11,13 +11,16 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
 
   return (
-    <li>
-      <div className="font-pizza flex flex-row items-center justify-between gap-4 px-4 py-1 text-xs sm:text-sm">
-        <p>
+    <li className="grid grow grid-cols-2 grid-rows-2 items-center justify-between px-4 py-1 font-pizza text-xs sm:text-sm">
+      <div className="col-span-2 flex flex-row justify-between">
+        <p className="">
           <span>{quantity}&times;</span> {name}
         </p>
         <p className="font-semibold">{formatCurrency(totalPrice)}</p>
       </div>
+      <p className="col-span-2 text-sm capitalize italic text-stone-400">
+        {isLoadingIngredients ? "Loading..." : ingredients?.join(", ")}
+      </p>
     </li>
   );
 }
